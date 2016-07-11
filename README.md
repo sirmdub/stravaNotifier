@@ -7,6 +7,9 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 ### Todo
 
 - [ ] make my own simple summary objects that are pickleable
+- [ ] summary obj for segment?
+- [ ] summary obj for segment leaderboard
+- [ ] summary obj for activity feed
 - [ ] profit $$$
 
 ### Notes about design decisions (you don't have to like it...)
