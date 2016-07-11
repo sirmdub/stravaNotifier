@@ -6,4 +6,9 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 
 ### Todo
 
+- [ ] make my own simple summary objects that are pickleable
 - [ ] profit $$$
+
+### Notes about design decisions (you don't have to like it...)
+I like pickle for serializing objects as a simple persistence model.
+I think I can contain the whole thing, persisted data and all in Docker, and run it from anywhere.
