@@ -10,9 +10,12 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 - [ ] summary obj for segment?
 - [ ] summary obj for segment leaderboard
 - [ ] summary obj for activity feed
+- [ ] persist data as JSON on disk
+- [ ] research/pick mature persistence (dataset, tinydb, redis, postgres, mysql)
+- [ ] mature persistence to another data store
 - [ ] profit $$$
 
 ### Notes about design decisions (you don't have to like it...)
-I want to serialize objects as a simple persistence model.
-Pickle works, but I need to create my own summary object types with only simple pieces of data.
-Looks like JSON can do the job, and keep me open to future portability (code and datastore). (Ref: http://www.diveintopython3.net/serializing.html)
+I want to serialize objects into json as a simple persistence model.
+Pickle works, but I need to create my own summary object types with only simple pieces of data, and its not portable.
+Looks like JSON can do the job, and keep me open to future portability (code and datastore).
