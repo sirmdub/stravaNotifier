@@ -8,7 +8,7 @@ client = Client()
 
 config.read('config.ini')
 client.access_token = config.get("access","access_token")
-print(json.loads(config.get("app","friends")))
+app_friends = config.get("app","friends")
 
 # get my profile
 #curr_athlete = client.get_athlete()
@@ -51,9 +51,9 @@ print(len(activity_feed_list))
 #print(activity_feed_list[0])
 #print(activity_feed_list[0].athlete)
 afl_json = {"afl": []}
-i=0
 for i in range(0, len(activity_feed_list)):
-  afl_json["afl"].append(json.dumps({"id": activity_feed_list[i].id,
-    "athlete_id": activity_feed_list[i].athlete.id}))
+  if str(activity_feed_list[i].athlete.id) in app_friends:
+    afl_json["afl"].append(json.dumps({"id": activity_feed_list[i].id,
+      "athlete_id": activity_feed_list[i].athlete.id}))
 
 print(afl_json)
