@@ -26,27 +26,34 @@ print(json.loads(config.get("app","friends")))
 #print(dir(curr_segment))
 #print(curr_segment)
 # get a segment leaderboard
-curr_segmentldr = client.get_segment_leaderboard(11493495)
-print(type(curr_segmentldr))
-print(dir(curr_segmentldr))
+#curr_segmentldr = client.get_segment_leaderboard(11493495)
+#print(type(curr_segmentldr))
+#print(dir(curr_segmentldr))
 #will need to iterate through the curr_segmentldr object (its a collection), based on .entry_count
-print(curr_segmentldr.entry_count)
-segmentldr_json = {"segmentldr": []}
-for i in range(0, 10):
-  segmentldr_json["segmentldr"].append(json.dumps({"athlete_name": curr_segmentldr[i].athlete_name,
-    "athlete_id": curr_segmentldr[i].athlete_id,
-    "activity_id": curr_segmentldr[i].activity_id,
-    "rank": curr_segmentldr[i].rank}))
+#print(curr_segmentldr.entry_count)
+#segmentldr_json = {"segmentldr": []}
+#for i in range(0, 10):
+#  segmentldr_json["segmentldr"].append(json.dumps({"athlete_name": curr_segmentldr[i].athlete_name,
+#    "athlete_id": curr_segmentldr[i].athlete_id,
+#    "activity_id": curr_segmentldr[i].activity_id,
+#    "rank": curr_segmentldr[i].rank}))
 
-print(segmentldr_json)
+#print(segmentldr_json)
 
 # get my friends activities
-#activity_feed = client.get_friend_activities()
+activity_feed = client.get_friend_activities()
 #print(type(activity_feed))
 #print(dir(activity_feed))
 #print(activity_feed)
 #once you get the feed, you have to call list() on it to get a dict object
-#activity_feed_list = list(activity_feed)
-#print(len(activity_feed_list))
+activity_feed_list = list(activity_feed)
+print(len(activity_feed_list))
 #print(activity_feed_list[0])
 #print(activity_feed_list[0].athlete)
+afl_json = {"afl": []}
+i=0
+for i in range(0, len(activity_feed_list)):
+  afl_json["afl"].append(json.dumps({"id": activity_feed_list[i].id,
+    "athlete_id": activity_feed_list[i].athlete.id}))
+
+print(afl_json)

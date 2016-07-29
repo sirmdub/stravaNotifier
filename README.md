@@ -6,9 +6,6 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 
 ### Todo
 
-- [ ] make my own simple summary objects that are serializable
-- [ ] summary obj for segment leaderboard
-- [ ] summary obj for activity feed
 - [ ] persist data as JSON on disk (can I diff JSON objects?)
 - [ ] research/pick mature persistence (dataset, tinydb, redis, postgres, mysql)
 - [ ] mature persistence to another data store
