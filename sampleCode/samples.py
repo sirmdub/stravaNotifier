@@ -1,6 +1,7 @@
 #!/bin/python
 import ConfigParser
 import json
+import io
 from stravalib.client import Client
 
 config = ConfigParser.ConfigParser()
@@ -57,3 +58,26 @@ for i in range(0, len(activity_feed_list)):
       "athlete_id": activity_feed_list[i].athlete.id}))
 
 print(afl_json)
+
+of = open('basic.json', 'wb')
+json.dump(afl_json, of)
+of.close()
+
+f = open('basic.json', 'rb')
+got_json = json.load(f)
+f.close()
+print(type(got_json))
+print(got_json)
+
+got_json["afl"].append(json.dumps({"id": 12345, "athlete_id": 12345}))
+print(got_json)
+
+of = open('basic.json', 'wb')
+json.dump(got_json, of)
+of.close()
+
+f = open('basic.json', 'rb')
+got_json = json.load(f)
+f.close()
+print(type(got_json))
+print(got_json)
