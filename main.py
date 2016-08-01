@@ -18,7 +18,8 @@ afl_list = []
 for i in range(0, len(activity_feed_list)):
   if str(activity_feed_list[i].athlete.id) in app_friends:
     afl_list.append(activity_feed_list[i].id)
-print(afl_list)
+
+#print(afl_list)
 
 #get the history of notifications
 f = open('notification.list', 'rb')
@@ -26,15 +27,10 @@ notification_list = json.load(f)
 f.close()
 
 for activity in afl_list:
-  print(activity)
+  print("processing activity id " + str(activity))
   if activity not in notification_list:
     print("Notification not found, carry on with notification")
     notification_list.append(activity)
     of = open('notification.list', 'wb')
     json.dump(notification_list, of)
     of.close()
-
-f = open('notification.list', 'rb')
-new_list = json.load(f)
-f.close()
-print(new_list)
