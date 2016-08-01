@@ -19,3 +19,12 @@ Notifications:
 	once an actiity is identified and loaded, a process to create notifications comes through, notifies, then marks the activity as notified
 	notifications can be email? sns? sms? hipchat running group?
 
+### Workflow
+* Get activity feed
+  * Store activity feed json
+* Get notification history json
+* For each activity feed json item:
+	* If activity id not in notification history json:
+		* Send notification
+		* Append activity id in notification json list
+			* Store activity history json
