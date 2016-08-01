@@ -81,3 +81,8 @@ got_json = json.load(f)
 f.close()
 print(type(got_json))
 print(got_json)
+
+for key, values in got_json.items():
+  for item in values:
+    print(item)
+
