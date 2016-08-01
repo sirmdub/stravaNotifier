@@ -21,10 +21,10 @@ Notifications:
 
 ### Workflow
 * Get activity feed
-  * Store activity feed json
 * Get notification history json
 * For each activity feed json item:
 	* If activity id not in notification history json:
 		* Send notification
 		* Append activity id in notification json list
 			* Store activity history json
+* How to archive old notifications out of activity history json?

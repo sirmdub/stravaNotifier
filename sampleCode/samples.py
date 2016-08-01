@@ -52,28 +52,21 @@ print(len(activity_feed_list))
 #print(activity_feed_list[0])
 #print(activity_feed_list[0].athlete)
 afl_json = {"afl": []}
+afl_list = []
 for i in range(0, len(activity_feed_list)):
   if str(activity_feed_list[i].athlete.id) in app_friends:
-    afl_json["afl"].append(json.dumps({"id": activity_feed_list[i].id,
-      "athlete_id": activity_feed_list[i].athlete.id}))
+    afl_json["afl"].append(json.dumps({"id": activity_feed_list[i].id}))
+    afl_list.append(activity_feed_list[i].id)
 
+print(type(afl_json))
 print(afl_json)
+print(afl_list)
 
 of = open('basic.json', 'wb')
 json.dump(afl_json, of)
 of.close()
-
-f = open('basic.json', 'rb')
-got_json = json.load(f)
-f.close()
-print(type(got_json))
-print(got_json)
-
-got_json["afl"].append(json.dumps({"id": 12345, "athlete_id": 12345}))
-print(got_json)
-
-of = open('basic.json', 'wb')
-json.dump(got_json, of)
+of = open('basic.list', 'wb')
+json.dump(afl_list, of)
 of.close()
 
 f = open('basic.json', 'rb')
@@ -81,8 +74,13 @@ got_json = json.load(f)
 f.close()
 print(type(got_json))
 print(got_json)
+f = open('basic.list', 'rb')
+got_list = json.load(f)
+f.close()
+print(type(got_list))
+print(got_list)
 
-for key, values in got_json.items():
-  for item in values:
-    print(item)
-
+if 65732142 not in got_list:
+  print("Notification not found, notify on")
+  got_list.append(65732142)
+  print(got_list)
