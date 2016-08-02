@@ -51,7 +51,8 @@ def hipchat_notify(token, room, message, color='yellow', notify=False,
     headers = {'Content-type': 'application/json'}
     headers['Authorization'] = "Bearer " + token
     payload = {
-        'message': message,
+        'message': '',
+        'link': message,
         'notify': notify,
         'message_format': format,
         'color': color
