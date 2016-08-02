@@ -6,25 +6,18 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 
 ### Todo
 
-- [ ] persist data as JSON on disk (can I diff JSON objects?)
+- [ ] How to archive old notifications out of activity history json?
 - [ ] research/pick mature persistence (dataset, tinydb, redis, postgres, mysql)
 - [ ] mature persistence to another data store
+- [ ] deploy on lambda (currently running on cron *nix environment)
 - [ ] profit $$$
 
-### Notes about design decisions (you don't have to like it...)
-I want to serialize objects into json as a simple persistence model.
-Pickle works, but I need to create my own summary object types with only simple pieces of data, and its not portable.
-Looks like JSON can do the job, and keep me open to future portability (code and datastore).
-Notifications:
-	once an actiity is identified and loaded, a process to create notifications comes through, notifies, then marks the activity as notified
-	notifications can be email? sns? sms? hipchat running group?
 
 ### Workflow
 * Get activity feed
-* Get notification history json
+* Get persisted notification history json
 * For each activity feed json item:
 	* If activity id not in notification history json:
 		* Send notification
 		* Append activity id in notification json list
 			* Store activity history json
-* How to archive old notifications out of activity history json?
