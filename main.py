@@ -83,7 +83,7 @@ for activity in afl_list:
   print("processing activity id " + str(activity))
   if activity not in notification_list:
     print("Notification not found, carry on with notification")
-    hipchat_notify(hipchat_token, 'mdub only', 'https://www.strava.com/activities/' + str(activity))
+    hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
     notification_list.append(activity)
     of = open('notification.list', 'wb')
     json.dump(notification_list, of)
