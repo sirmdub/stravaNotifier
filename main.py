@@ -47,7 +47,7 @@ def hipchat_notify(token, room, message, color='yellow', notify=False,
     if not isinstance(notify, bool):
         raise TypeError("Notify must be boolean")
 
-    url = "https://{0}/v2/room/{1}/notification".format(host, room)
+    url = "https://{0}/v2/room/{1}/share/link".format(host, room)
     headers = {'Content-type': 'application/json'}
     headers['Authorization'] = "Bearer " + token
     payload = {
