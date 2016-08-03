@@ -69,8 +69,9 @@ activity_feed = client.get_friend_activities()
 activity_feed_list = list(activity_feed)
 afl_list = []
 for i in range(0, len(activity_feed_list)):
-  if str(activity_feed_list[i].athlete.id) in app_friends:
-    afl_list.append(activity_feed_list[i].id)
+  if ( str(activity_feed_list[i].athlete.id) in app_friends and
+      not activity_feed_list[i].private ):
+        afl_list.append(activity_feed_list[i].id)
 
 #print(afl_list)
 
