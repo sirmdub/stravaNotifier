@@ -11,7 +11,7 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 - [ ] profit $$$
 
 
-### Workflow
+### Activity Feed Workflow
 * Get activity feed
 * Get persisted notification history json
 * For each activity feed json item:
@@ -19,3 +19,11 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 		* Send notification
 		* Append activity id in notification json list
 			* Store activity history json
+
+### Segment Workflow
+* Get segment leaderboard
+* Get persisted segment leaderboard
+* If leaderboards diff
+  * Find a meaningful way to show what changed?
+	* Send notification
+	* Store updated leaderboard
