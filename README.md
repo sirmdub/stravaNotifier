@@ -7,8 +7,6 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 ### Todo
 
 - [ ] How to archive old notifications out of activity history json?
-- [ ] research/pick mature persistence (dataset, tinydb, redis, postgres, mysql)
-- [ ] mature persistence to another data store
 - [ ] deploy on lambda (currently running on cron *nix environment)
 - [ ] profit $$$
 
