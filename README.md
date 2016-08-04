@@ -6,8 +6,8 @@ This app uses the stravalib python and redis libraries, so install it: pip insta
 
 ### Todo
 
-- [ ] How to archive old notifications out of activity history json?
-- [ ] deploy on lambda (currently running on cron *nix environment)
+- [ ] Turn down WARNING log level out of cloudwatch logs?
+- [ ] How to archive old notifications out of redis?
 - [ ] profit $$$
 - [ ] if profit then write tests :)
 
