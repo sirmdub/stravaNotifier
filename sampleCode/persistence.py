@@ -4,6 +4,11 @@ import io
 import pickle
 import redis
 
+config = ConfigParser.ConfigParser()
+
+config.read('config.ini')
+redis_host = config.get("access", "redis_host")
+
 
 ###pickle serialization examples###
 pkl_file = open('data.pkl', 'rb')
@@ -40,7 +45,7 @@ f.close()
 print(got_json)
 
 ##redis examples##
-r = redis.StrictRedis(host='redis')
+r = redis.StrictRedis(host=redis_host)
 
 stuff = [12345, 661433997, 660910621, 660773605, 661171413, 660742477, 660319359, 660862539, 659821469, 659814635, 659584841, 658886683, 658652335, 658634949, 659030864, 658387262, 661833033]
 print(r.spop("stuff"))

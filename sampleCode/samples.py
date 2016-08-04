@@ -10,6 +10,7 @@ client = Client()
 config.read('config.ini')
 client.access_token = config.get("access","access_token")
 app_friends = config.get("app","friends")
+redis_host = config.get("access", "redis_host")
 
 # get my profile
 #curr_athlete = client.get_athlete()
