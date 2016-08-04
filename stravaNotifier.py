@@ -82,5 +82,5 @@ def main(event, context):
 	  print("processing activity id " + str(activity))
 	  if not r.sismember("notifications", activity):
 	    print("Notification not found, carry on with notification")
-	    #hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
+	    hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
 	    r.sadd("notifications", activity)
