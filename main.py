@@ -1,10 +1,10 @@
 #!/bin/python
 import ConfigParser
 import json
-import io
 from stravalib.client import Client
 import requests
 import sys
+import redis
 
 config = ConfigParser.ConfigParser()
 client = Client()
@@ -13,6 +13,8 @@ config.read('config.ini')
 client.access_token = config.get("access","access_token")
 app_friends = config.get("app","friends")
 hipchat_token = config.get("access","hipchat_token")
+redis_host = config.get("access", "redis_host")
+r = redis.StrictRedis(host=redis_host)
 
 def hipchat_notify(token, room, message, color='yellow', notify=False,
                    format='text', host='api.hipchat.com'):
@@ -75,17 +77,9 @@ for i in range(0, len(activity_feed_list)):
 
 #print(afl_list)
 
-#get the history of notifications
-f = open('notification.list', 'rb')
-notification_list = json.load(f)
-f.close()
-
 for activity in afl_list:
   print("processing activity id " + str(activity))
-  if activity not in notification_list:
+  if not r.sismember("notifications", activity):
     print("Notification not found, carry on with notification")
     hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
-    notification_list.append(activity)
-    of = open('notification.list', 'wb')
-    json.dump(notification_list, of)
-    of.close()
+    r.sadd("notifications", activity)
