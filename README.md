@@ -9,6 +9,7 @@ This app uses the stravalib python library, so install it: pip install -t . stra
 - [ ] How to archive old notifications out of activity history json?
 - [ ] deploy on lambda (currently running on cron *nix environment)
 - [ ] profit $$$
+- [ ] if profit then write tests :)
 
 
 ### Activity Feed Workflow
