@@ -62,24 +62,25 @@ def hipchat_notify(token, room, message, color='yellow', notify=False,
     r = requests.post(url, data=json.dumps(payload), headers=headers)
     r.raise_for_status()
 
-######
-# MAIN
-######
+def main(event, context):
+	######
+	# MAIN (designed to be imported and ran from another py, so lambda can play, or I can play)
+	######
 
-# get my friends activities
-activity_feed = client.get_friend_activities()
-activity_feed_list = list(activity_feed)
-afl_list = []
-for i in range(0, len(activity_feed_list)):
-  if ( str(activity_feed_list[i].athlete.id) in app_friends and
-      not activity_feed_list[i].private ):
-        afl_list.append(activity_feed_list[i].id)
+	# get my friends activities
+	activity_feed = client.get_friend_activities()
+	activity_feed_list = list(activity_feed)
+	afl_list = []
+	for i in range(0, len(activity_feed_list)):
+	  if ( str(activity_feed_list[i].athlete.id) in app_friends and
+	      not activity_feed_list[i].private ):
+	        afl_list.append(activity_feed_list[i].id)
 
-#print(afl_list)
+	#print(afl_list)
 
-for activity in afl_list:
-  print("processing activity id " + str(activity))
-  if not r.sismember("notifications", activity):
-    print("Notification not found, carry on with notification")
-    hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
-    r.sadd("notifications", activity)
+	for activity in afl_list:
+	  print("processing activity id " + str(activity))
+	  if not r.sismember("notifications", activity):
+	    print("Notification not found, carry on with notification")
+	    #hipchat_notify(hipchat_token, 'Running Group', 'https://www.strava.com/activities/' + str(activity))
+	    r.sadd("notifications", activity)
