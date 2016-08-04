@@ -2,6 +2,7 @@ import ConfigParser
 import json
 import io
 import pickle
+import redis
 
 
 ###pickle serialization examples###
@@ -37,3 +38,17 @@ got_json = json.load(f)
 f.close()
 
 print(got_json)
+
+##redis examples##
+r = redis.StrictRedis(host='redis')
+
+stuff = [12345, 661433997, 660910621, 660773605, 661171413, 660742477, 660319359, 660862539, 659821469, 659814635, 659584841, 658886683, 658652335, 658634949, 659030864, 658387262, 661833033]
+print(r.spop("stuff"))
+
+for i in stuff:
+  print("processing " + str(i))
+  if not r.sismember("stuff", i):
+    print("not found in db...")
+    r.sadd("stuff", i)
+
+print(r.smembers("stuff"))
