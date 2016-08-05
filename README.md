@@ -6,7 +6,6 @@ This app uses the stravalib python and redis libraries, so install it: pip insta
 
 ### Todo
 
-- [ ] Turn down WARNING log level out of cloudwatch logs?
 - [ ] How to archive old notifications out of redis?
 - [ ] profit $$$
 - [ ] if profit then write tests :)
