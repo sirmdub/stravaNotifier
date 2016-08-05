@@ -5,6 +5,10 @@ from stravalib.client import Client
 import requests
 import sys
 import redis
+import logging
+
+logger = logging.getLogger()
+logger.setLevel(logging.ERROR)
 
 config = ConfigParser.ConfigParser()
 client = Client()
