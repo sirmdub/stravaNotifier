@@ -1,4 +1,4 @@
-FROM python:2-slim
+FROM python:2-alpine
 
 RUN pip install stravalib==0.6.0 redis==2.10.5
 RUN mkdir -p /usr/src/app
