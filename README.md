@@ -6,7 +6,9 @@ This app uses the stravalib python and redis libraries, so install it: pip insta
 
 ### Todo
 
-- [ ] How to archive old notifications out of redis?
+- [ ] Amazon SimpleDb
+- [ ] Dockerize
+- [ ] How to archive old notifications out of datastore?
 - [ ] profit $$$
 - [ ] if profit then write tests :)
 
