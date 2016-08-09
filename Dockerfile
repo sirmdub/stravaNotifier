@@ -1,8 +1,8 @@
 FROM python:2-alpine
 
-RUN pip install stravalib==0.6.0 redis==2.10.5
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+RUN pip install -t . stravalib==0.6.0 redis==2.10.5
 COPY . /usr/src/app
 
 RUN apk add --no-cache --virtual zip
