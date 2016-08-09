@@ -5,4 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY . /usr/src/app
 
+RUN apk add --no-cache --virtual zip
+RUN zip -r stravaNotifier.zip .
+
 CMD [ "python", "./run.py" ]
